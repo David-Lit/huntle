@@ -174,7 +174,7 @@ input[type="search"]:focus { border-color: var(--gold); }
 .empty { text-align: center; color: var(--muted); padding: 24px 0; }
 
 .thumb {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 1; /* wiki weapon images are 512x128 */
   border-radius: 6px;
   background: #0f0d0b;
   display: grid;
@@ -183,9 +183,9 @@ input[type="search"]:focus { border-color: var(--gold); }
 }
 .thumb img { width: 100%; height: 100%; object-fit: contain; }
 .thumb .initials { font-family: Georgia, serif; color: var(--muted); font-size: 1.1rem; letter-spacing: 0.08em; }
-.thumb.lg { width: min(320px, 100%); margin: 0 auto; }
+.thumb.lg { width: min(420px, 100%); margin: 0 auto; }
 .thumb.lg .initials { font-size: 2.4rem; }
-.thumb.sm { width: 64px; flex: none; }
+.thumb.sm { width: 112px; flex: none; }
 .thumb.sm .initials { font-size: 0.8rem; }
 
 /* Feedback */
@@ -335,3 +335,8 @@ dialog .next { margin-top: 18px; }
 @media (prefers-reduced-motion: reduce) {
   .is-playing { animation: none; box-shadow: 0 0 0 4px rgba(181, 53, 42, 0.5); }
 }
+
+/* Footer */
+.credits { margin-top: 32px; text-align: center; font-size: 0.75rem; color: var(--muted); }
+.credits p { margin: 4px 0; }
+.credits a { color: var(--gold); }
