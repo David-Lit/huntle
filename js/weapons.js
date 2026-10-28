@@ -8,6 +8,9 @@
  *   category  One of the keys in config.js "categories".
  *   family    Optional. Weapons with the same family are variants of one gun.
  *             Guessing the right family but wrong variant scores a yellow (partial).
+ *   soundGroup Optional. Weapons with the same soundGroup sound identical, so
+ *             guessing any of them counts as correct. They are treated as one
+ *             answer, and the first one listed here supplies the sound file.
  *   aliases   Optional. Extra search terms.
  *   audio     Optional. Custom audio file name (e.g. "winfield.ogg").
  *   image     Optional. Custom image file name (e.g. "winfield.jpg").

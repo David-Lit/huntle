@@ -24,6 +24,8 @@ That's it. Nothing else needs to change.
 
 `js/weapons.js` is a starter list. Add, rename or remove entries freely. Weapons that share a `family` (for example the Winfield M1873 and M1873C) are variants of one gun: guessing the wrong variant scores yellow instead of red. `aliases` adds extra search words.
 
+Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess, they only ever count as one answer, and only the first one listed in `weapons.js` needs a sound file.
+
 Note: the daily picks are shuffled from the answer pool, so adding or removing weapons changes upcoming puzzles. That's fine before launch. After launch, prefer adding weapons in batches.
 
 ## Settings (`js/config.js`)

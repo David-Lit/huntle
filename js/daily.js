@@ -55,8 +55,19 @@
     return a;
   }
 
+  // One entry per distinct sound. Weapons sharing a soundGroup count once, and
+  // the first weapon listed in that group (in weapons.js) supplies the sound.
   function answerPool() {
-    return WEAPONS.filter((w) => w.inPool !== false).map((w) => w.id).sort();
+    const seen = new Set();
+    const ids = [];
+    WEAPONS.forEach((w) => {
+      if (w.inPool === false) return;
+      const key = w.soundGroup || w.id;
+      if (seen.has(key)) return;
+      seen.add(key);
+      ids.push(w.id);
+    });
+    return ids.sort();
   }
 
   // Weapons are dealt from a shuffled deck, five per day, so no weapon repeats
