@@ -457,7 +457,7 @@
 
     $("#puzzle-no").textContent = `#${puzzle.number}` + (preview ? " · preview" : "");
     $$(".rounds-count").forEach((e) => (e.textContent = N));
-    $$(".reset-note").forEach((e) => (e.textContent = `A new set of shots every day at ${pad(C.resetHour)}:00, Argentina time.`));
+    $$(".reset-note").forEach((e) => (e.textContent = `A new set of shots every day at ${C.resetHour === 0 ? "midnight" : pad(C.resetHour) + ":00"}, Argentina time.`));
 
     buildChips();
     buildGrid();

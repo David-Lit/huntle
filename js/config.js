@@ -5,8 +5,8 @@ window.HUNTLE_CONFIG = {
   roundsPerDay: 5,
 
   // A new puzzle starts every day at this hour, Argentina time.
-  // 12 = noon. Use 0 for midnight.
-  resetHour: 12,
+  // 0 = midnight, 12 = noon.
+  resetHour: 0,
   // Argentina is UTC-3 all year (no daylight saving).
   utcOffsetHours: -3,
   // The Argentina date on which puzzle #1 went live (at resetHour).
