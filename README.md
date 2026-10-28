@@ -22,7 +22,7 @@ That's it. Nothing else needs to change.
 
 ## Editing weapons
 
-`js/weapons.js` follows the 1896 names on the [Hunt: Showdown wiki](https://huntshowdown.wiki.gg/wiki/Weapons), grouped by ammo type. Melee weapons are left out. Add, rename or remove entries freely. Weapons that share a `family` (for example the Romero 77 and Romero 77 Shorty) are variants of one gun: guessing the wrong variant scores yellow instead of red. `aliases` adds extra search words.
+`js/weapons.js` follows the 1896 names on the [Hunt: Showdown wiki](https://huntshowdown.wiki.gg/wiki/Weapons), grouped by ammo type. Melee weapons are left out, and so are variants (Shorty, Precision, Match and so on) because they sound the same as their base weapon. Their names are search words on the base weapon, so searching "Romero 77 Shorty" finds the Romero 77. Add, rename or remove entries freely. Weapons that share a `family` (for example the Vandal 73C and the Ranger 73) are related guns: mixing them up scores yellow instead of red. `aliases` adds extra search words.
 
 Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess, they only ever count as one answer, and only the first one listed in `weapons.js` needs a sound file.
 
