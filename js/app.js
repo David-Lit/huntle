@@ -66,8 +66,15 @@
     if (guessId === answerId) return "correct";
     const g = byId.get(guessId);
     const a = byId.get(answerId);
+    if (g && a && g.soundGroup && g.soundGroup === a.soundGroup) return "correct";
     if (g && a && g.family && g.family === a.family) return "partial";
     return "wrong";
+  }
+
+  // Other weapons that sound identical to this one, so also count as correct.
+  function soundAlikes(w) {
+    if (!w.soundGroup) return [];
+    return WEAPONS.filter((o) => o.id !== w.id && o.soundGroup === w.soundGroup);
   }
 
   function score() {
@@ -221,7 +228,11 @@
       el("p", "reveal-name", answer.name),
       el("p", "muted small", catLabel(answer.category))
     );
-    if (g.result !== "correct") {
+    const alikes = soundAlikes(answer);
+    if (alikes.length) {
+      fb.appendChild(el("p", "muted small", "Sounds identical, also accepted: " + alikes.map((o) => o.name).join(", ")));
+    }
+    if (g.guess !== answer.id) {
       fb.appendChild(el("p", "your-guess", "Your guess: " + (guess ? guess.name : g.guess)));
     }
   }
@@ -246,7 +257,7 @@
       btn.addEventListener("click", () => playWeapon(id, btn));
       const text = el("div", "sum-text");
       text.appendChild(el("span", "sum-name", w.name));
-      if (g.result !== "correct") {
+      if (g.guess !== id) {
         const gw = byId.get(g.guess);
         text.appendChild(el("span", "muted small", "You said " + (gw ? gw.name : g.guess)));
       }
