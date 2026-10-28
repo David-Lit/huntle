@@ -1,6 +1,6 @@
 # Huntle
 
-A daily Hunt: Showdown sound quiz. Each day players hear five gunshots and name the weapon behind each one. A new set goes live every day at 12:00 Argentina time, and every player gets the same five shots.
+A daily Hunt: Showdown sound quiz. Each day players hear five gunshots and name the weapon behind each one. A new set goes live every day at midnight Argentina time, and every player gets the same five shots.
 
 It is a plain static website (HTML, CSS and JavaScript) with no build step and no server code.
 
@@ -30,7 +30,7 @@ Note: the daily picks are shuffled from the answer pool, so adding or removing w
 
 | Setting | What it does |
 | --- | --- |
-| `resetHour` | Hour the new puzzle starts, Argentina time (12 = noon, 0 = midnight) |
+| `resetHour` | Hour the new puzzle starts, Argentina time (0 = midnight, 12 = noon) |
 | `launchDate` | Argentina date of puzzle #1 |
 | `roundsPerDay` | Shots per day (5) |
 | `schedule` | Hand-picked puzzles by number, overriding the random pick |
@@ -61,7 +61,7 @@ Any static host works. Two easy options:
 
 ## How it works
 
-- `js/daily.js` turns the current time into a puzzle number (it flips at 15:00 UTC, which is 12:00 in Argentina) and deals five weapons from a deck shuffled with that number as the seed. No weapon repeats until the whole pool has been used.
+- `js/daily.js` turns the current time into a puzzle number (it flips at 03:00 UTC, which is midnight in Argentina) and deals five weapons from a deck shuffled with that number as the seed. No weapon repeats until the whole pool has been used.
 - `js/app.js` runs the game. Progress and stats are saved in the player's browser (`localStorage`), so there are no accounts and no server.
 - `js/audio.js` plays the sounds, with the placeholder fallback.
 
