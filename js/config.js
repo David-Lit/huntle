@@ -13,8 +13,8 @@ window.HUNTLE_CONFIG = {
   launchDate: "2026-10-28",
 
   // Where your files live, and the default file extensions.
-  // A weapon with id "winfield-m1873" loads assets/audio/winfield-m1873.mp3
-  // and assets/images/winfield-m1873.png, unless the weapon sets its own
+  // A weapon with id "ranger-73" loads assets/audio/ranger-73.mp3
+  // and assets/images/ranger-73.png, unless the weapon sets its own
   // "audio" or "image" filename in weapons.js.
   audioDir: "assets/audio/",
   imageDir: "assets/images/",
@@ -30,18 +30,21 @@ window.HUNTLE_CONFIG = {
 
   // Optional hand-picked puzzles, keyed by puzzle number. These override the
   // random daily pick. Each list must have exactly roundsPerDay weapon ids.
-  // Example: schedule: { 1: ["winfield-m1873", "romero-77", "dolch-96", "lebel-1886", "sparks-lrr"] }
+  // Example: schedule: { 1: ["ranger-73", "romero-77", "dolch-96", "lebel-1886", "sparks"] }
   schedule: {},
 
   // Link included in the share text. Leave empty to use the page's own URL.
   shareUrl: "",
 
-  // Filter chips shown above the weapon list. Keys match "category" in weapons.js.
+  // Filter chips shown above the weapon list: [key, chip label, label on the
+  // answer screen]. Keys match "category" in weapons.js.
   categories: [
     ["all", "All"],
-    ["rifle", "Rifles"],
-    ["pistol", "Pistols"],
-    ["shotgun", "Shotguns"],
-    ["special", "Special"],
+    ["compact", "Compact", "Compact ammo"],
+    ["medium", "Medium", "Medium ammo"],
+    ["long", "Long", "Long ammo"],
+    ["special-long", "Special Long", "Special long ammo"],
+    ["shells", "Shotgun", "Shotgun shells"],
+    ["special", "Special", "Special ammo"],
   ],
 };

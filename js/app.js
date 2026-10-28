@@ -96,7 +96,7 @@
 
   function catLabel(key) {
     const c = C.categories.find((c) => c[0] === key);
-    return c ? c[1].replace(/s$/, "") : "";
+    return c ? c[2] || c[1] : "";
   }
 
   function weaponImage(w, size) {

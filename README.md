@@ -9,8 +9,8 @@ It is a plain static website (HTML, CSS and JavaScript) with no build step and n
 Each weapon in `js/weapons.js` has an `id`. Name your files after that id:
 
 ```
-assets/audio/winfield-m1873.mp3
-assets/images/winfield-m1873.png
+assets/audio/ranger-73.mp3
+assets/images/ranger-73.png
 ```
 
 That's it. Nothing else needs to change.
@@ -22,7 +22,7 @@ That's it. Nothing else needs to change.
 
 ## Editing weapons
 
-`js/weapons.js` is a starter list. Add, rename or remove entries freely. Weapons that share a `family` (for example the Winfield M1873 and M1873C) are variants of one gun: guessing the wrong variant scores yellow instead of red. `aliases` adds extra search words.
+`js/weapons.js` follows the 1896 names on the [Hunt: Showdown wiki](https://huntshowdown.wiki.gg/wiki/Weapons), grouped by ammo type. Melee weapons are left out. Add, rename or remove entries freely. Weapons that share a `family` (for example the Romero 77 and Romero 77 Shorty) are variants of one gun: guessing the wrong variant scores yellow instead of red. `aliases` adds extra search words.
 
 Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess, they only ever count as one answer, and only the first one listed in `weapons.js` needs a sound file.
 
