@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#13100e">
+  <title>Huntle</title>
+  <meta name="description" content="A daily Hunt: Showdown sound quiz. Hear five gunshots, name the weapons.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn" id="btn-help" aria-label="How to play">?</button>
+    <div class="brand">
+      <h1>HUNTLE</h1>
+      <span id="puzzle-no" class="puzzle-no"></span>
+    </div>
+    <button class="icon-btn" id="btn-stats" aria-label="Statistics">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4 20h3V10H4v10Zm6.5 0h3V4h-3v16ZM17 20h3v-7h-3v7Z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <ol id="progress" class="progress" aria-label="Progress"></ol>
+
+    <section id="play-view">
+      <div class="round-panel">
+        <p id="round-label" class="round-label"></p>
+        <button id="btn-play" class="play-btn" aria-label="Play gunshot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg>
+        </button>
+        <p class="hint">Tap to play. Replay as often as you like.</p>
+        <p id="audio-note" class="audio-note" hidden></p>
+      </div>
+
+      <div id="picker" class="picker">
+        <div class="picker-tools">
+          <input id="search" type="search" placeholder="Search weapons…" autocomplete="off" spellcheck="false" aria-label="Search weapons">
+          <div id="cats" class="chips" role="tablist" aria-label="Weapon type"></div>
+        </div>
+        <div id="grid" class="grid" role="listbox" aria-label="Weapons"></div>
+        <p id="empty" class="empty" hidden>No weapons match your search.</p>
+      </div>
+
+      <div id="feedback" class="feedback" hidden aria-live="polite"></div>
+    </section>
+
+    <section id="summary-view" class="summary" hidden>
+      <div class="summary-head">
+        <p id="sum-title" class="eyebrow"></p>
+        <p id="sum-score" class="big-score"></p>
+        <p id="sum-squares" class="squares"></p>
+        <p id="sum-line" class="sum-line"></p>
+      </div>
+      <ol id="sum-list" class="sum-list"></ol>
+      <div class="sum-actions">
+        <button id="btn-share" class="primary">Share result</button>
+        <button id="btn-sum-stats" class="secondary">Statistics</button>
+      </div>
+      <div class="next">
+        <p class="muted">Next Huntle in</p>
+        <p class="countdown"></p>
+        <p class="muted small reset-note"></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="action-bar" class="action-bar">
+    <div id="selected-label" class="selected"></div>
+    <button id="btn-submit" class="primary">Lock in</button>
+  </div>
+
+  <dialog id="dlg-help">
+    <button class="close" data-close aria-label="Close">×</button>
+    <h2>How to play</h2>
+    <ol class="help-list">
+      <li>Tap <b>play</b> to hear a gunshot from Hunt: Showdown. Replay it as often as you like.</li>
+      <li>Find the weapon in the list and tap <b>Lock in</b>. You get one guess per shot.</li>
+      <li>There are <b class="rounds-count">5</b> shots each day.</li>
+    </ol>
+    <div class="legend">
+      <p><span class="sq correct"></span> Correct weapon</p>
+      <p><span class="sq partial"></span> Right gun, wrong variant</p>
+      <p><span class="sq wrong"></span> Wrong weapon</p>
+    </div>
+    <p class="muted small reset-note"></p>
+  </dialog>
+
+  <dialog id="dlg-stats">
+    <button class="close" data-close aria-label="Close">×</button>
+    <h2>Statistics</h2>
+    <div class="stats-grid">
+      <div><b id="st-played">0</b><span>Played</span></div>
+      <div><b id="st-avg">0</b><span>Avg score</span></div>
+      <div><b id="st-streak">0</b><span>Streak</span></div>
+      <div><b id="st-max">0</b><span>Best streak</span></div>
+    </div>
+    <h3>Score distribution</h3>
+    <div id="st-dist" class="dist"></div>
+    <div class="next">
+      <p class="muted">Next Huntle in</p>
+      <p class="countdown"></p>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/weapons.js"></script>
+  <script src="js/daily.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
