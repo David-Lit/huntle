@@ -17,7 +17,7 @@ That's it. Nothing else needs to change.
 
 - **Other formats:** change `audioExt` / `imageExt` in `js/config.js` (for example `.ogg` or `.webp`), or give one weapon its own file name with `audio: "file.ogg"` / `image: "file.jpg"` in `weapons.js`.
 - **Images** are already in: the 512×128 weapon pictures from the Hunt: Showdown wiki (art © Crytek, credited in the page footer). They show in a 4:1 box, so replacements should be wide side views on a transparent background. If an image is missing, the card shows the weapon's initials.
-- **Sounds:** keep them short (one shot, about 1–3 seconds). Until a sound exists, a synthetic placeholder shot plays. When all your sounds are in, set `placeholderAudio: false` in `js/config.js`.
+- **Sounds** are recorded in the in-game Item Viewer at 0 m: the shot and its echo, cut before any cocking or reload sound. Keep new ones short (one shot, about 1–3 seconds). Until a sound exists, a synthetic placeholder shot plays. When all your sounds are in, set `placeholderAudio: false` in `js/config.js`.
 - **Weapons you have no sound for:** add `inPool: false` to that weapon. It stays in the guess list but is never an answer.
 
 ## Editing weapons

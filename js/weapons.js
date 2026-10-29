@@ -68,7 +68,7 @@ window.HUNTLE_WEAPONS = [
   // Shotgun shells
   { id: "auto-5", name: "Auto-5", category: "shells", aliases: ["crown king"] },
   { id: "auto-4-shorty", name: "Auto-4 Shorty", category: "shells" },
-  { id: "homestead-78", name: "Homestead 78", category: "shells", aliases: ["scarce"] },
+  { id: "homestead-78", name: "Homestead 78", category: "shells", aliases: ["scarce"], inPool: false },
   { id: "rival-78", name: "Rival 78", category: "shells", aliases: ["Rival 78 Shorty", "caldwell rival"] },
   { id: "romero-77", name: "Romero 77", category: "shells", aliases: ["Romero 77 Shorty"] },
   { id: "slate", name: "Slate", category: "shells", aliases: ["winfield 1893"] },
@@ -84,6 +84,6 @@ window.HUNTLE_WEAPONS = [
   { id: "hunting-bow", name: "Hunting Bow", category: "special", aliases: ["bow"] },
   { id: "bomb-launcher", name: "Bomb Launcher", category: "special", soundGroup: "bomb" },
   { id: "chu-ko-nu", name: "Chu Ko Nu", category: "special" },
-  { id: "flame-rifle", name: "Flame Rifle", category: "special", aliases: ["scarce"] },
+  { id: "flame-rifle", name: "Flame Rifle", category: "special", aliases: ["scarce"], inPool: false },
   { id: "hand-crossbow", name: "Hand Crossbow", category: "special" },
 ];

@@ -23,7 +23,7 @@ window.HUNTLE_CONFIG = {
 
   // While audio files are missing, play a synthetic gunshot so the game is
   // testable. Set to false once all your sounds are in.
-  placeholderAudio: true,
+  placeholderAudio: false,
 
   // Changing this reshuffles every future (and past) puzzle.
   seedSalt: "huntle-v1",
