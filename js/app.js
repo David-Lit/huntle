@@ -352,7 +352,8 @@
     // A streak only counts if the last game played was today's or yesterday's.
     const live = s.last != null && s.last >= D.currentNumber() - 1 ? s.streak : 0;
     $("#st-played").textContent = s.played;
-    $("#st-avg").textContent = s.played ? (s.total / s.played).toFixed(1) : "0";
+    // Share of all shots ever played that were named exactly right.
+    $("#st-avg").textContent = (s.played ? Math.round((s.total / (s.played * N)) * 100) : 0) + "%";
     $("#st-streak").textContent = live;
     $("#st-max").textContent = s.maxStreak;
     const max = Math.max(1, ...s.dist);
