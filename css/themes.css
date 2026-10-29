@@ -1,0 +1,150 @@
+/*
+ * Alternative color themes, picked by the player in Settings.
+ * Each theme applies when <html data-theme="..."> is set; without it the
+ * default Sepia & Gold look from styles.css is used.
+ * Generated from one template so every theme covers the same elements.
+ */
+
+/* Film grain shared by all themes (only drawn when a theme sets content). */
+[data-theme] body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 30; /* above everything; it ignores clicks */
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
+[data-theme] dialog::backdrop { background: rgba(0, 0, 0, 0.75); }
+
+/* ---------- Bone & Ash: Black and white: bone-white type on soot, like an old tintype photograph. ---------- */
+:root[data-theme="bone-and-ash"] {
+  --bg: #08080a;
+  --panel: #121214;
+  --panel-2: #1a1a1d;
+  --line: #2c2c30;
+  --text: #e9e5dc;
+  --muted: #8d8984;
+  --accent: #e9e5dc;
+  --gold: #f4f1ea;
+  --ok: #8fa383;
+  --partial: #c7b07a;
+  --bad: #a8574e;
+}
+[data-theme="bone-and-ash"] body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #1f1f22 0%, transparent 60%) fixed,
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.7) 100%) fixed,
+    #08080a;
+}
+[data-theme="bone-and-ash"] body::before { content: ""; }
+[data-theme="bone-and-ash"] .topbar { background: rgba(8,8,10, 0.94); }
+[data-theme="bone-and-ash"] .action-bar { background: rgba(8,8,10, 0.96); }
+[data-theme="bone-and-ash"] .brand h1 { text-shadow: 0 0 18px rgba(255,255,255,.12); }
+[data-theme="bone-and-ash"] .progress li.current { background: #f4f1ea; }
+[data-theme="bone-and-ash"] .play-btn { background: radial-gradient(circle at 35% 30%, #2a2a2d, #0c0c0e); border-color: #e9e5dc; }
+[data-theme="bone-and-ash"] .play-btn:hover { border-color: #ffffff; }
+[data-theme="bone-and-ash"] .mini-play { border-color: #e9e5dc; }
+[data-theme="bone-and-ash"] .is-playing { animation-name: pulse-bone-and-ash; }
+@keyframes pulse-bone-and-ash {
+  0% { box-shadow: 0 0 0 0 rgba(233,229,220, 0.65); }
+  100% { box-shadow: 0 0 0 22px rgba(233,229,220, 0); }
+}
+[data-theme="bone-and-ash"] .chip[aria-selected="true"] { color: #0b0b0c; background: #e9e5dc; border-color: #e9e5dc; }
+[data-theme="bone-and-ash"] .card:hover { border-color: #4a4a4f; }
+[data-theme="bone-and-ash"] .card[aria-selected="true"] { border-color: #f4f1ea; box-shadow: inset 0 0 0 1px #f4f1ea; background: #222225; }
+[data-theme="bone-and-ash"] .thumb { background: #060607; }
+[data-theme="bone-and-ash"] .primary { background: #e9e5dc; color: #0b0b0c; }
+[data-theme="bone-and-ash"] .primary:hover:not(:disabled) { background: #ffffff; }
+[data-theme="bone-and-ash"] .primary:disabled { background: #2a2a2d; color: #6c6a67; }
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="bone-and-ash"] .is-playing { box-shadow: 0 0 0 4px rgba(233,229,220, 0.5); }
+}
+
+/* ---------- Bayou Night: Black and dark blue: cold moonlight over swamp water. ---------- */
+:root[data-theme="bayou-night"] {
+  --bg: #04060a;
+  --panel: #0b111a;
+  --panel-2: #101823;
+  --line: #1d2a3a;
+  --text: #d3dbe4;
+  --muted: #7a889a;
+  --accent: #24466e;
+  --gold: #a9c1dc;
+  --ok: #4f8c6c;
+  --partial: #b39552;
+  --bad: #a8463f;
+}
+[data-theme="bayou-night"] body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #0f1a2a 0%, transparent 60%) fixed,
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.7) 100%) fixed,
+    #04060a;
+}
+[data-theme="bayou-night"] body::before { content: ""; }
+[data-theme="bayou-night"] .topbar { background: rgba(4,6,10, 0.94); }
+[data-theme="bayou-night"] .action-bar { background: rgba(4,6,10, 0.96); }
+[data-theme="bayou-night"] .brand h1 { text-shadow: 0 0 18px rgba(80,130,190,.25); }
+[data-theme="bayou-night"] .progress li.current { background: #a9c1dc; }
+[data-theme="bayou-night"] .play-btn { background: radial-gradient(circle at 35% 30%, #16263b, #05080d); border-color: #24466e; }
+[data-theme="bayou-night"] .play-btn:hover { border-color: #2f5a8c; }
+[data-theme="bayou-night"] .mini-play { border-color: #24466e; }
+[data-theme="bayou-night"] .is-playing { animation-name: pulse-bayou-night; }
+@keyframes pulse-bayou-night {
+  0% { box-shadow: 0 0 0 0 rgba(64,110,170, 0.65); }
+  100% { box-shadow: 0 0 0 22px rgba(64,110,170, 0); }
+}
+[data-theme="bayou-night"] .chip[aria-selected="true"] { color: #e6eef7; background: #24466e; border-color: #24466e; }
+[data-theme="bayou-night"] .card:hover { border-color: #33475f; }
+[data-theme="bayou-night"] .card[aria-selected="true"] { border-color: #a9c1dc; box-shadow: inset 0 0 0 1px #a9c1dc; background: #132033; }
+[data-theme="bayou-night"] .thumb { background: #03050a; }
+[data-theme="bayou-night"] .primary { background: #24466e; color: #e6eef7; }
+[data-theme="bayou-night"] .primary:hover:not(:disabled) { background: #2f5a8c; }
+[data-theme="bayou-night"] .primary:disabled { background: #141d29; color: #56657a; }
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="bayou-night"] .is-playing { box-shadow: 0 0 0 4px rgba(64,110,170, 0.5); }
+}
+
+/* ---------- Blood & Rust: Dark brown and red: dried blood on old leather. ---------- */
+:root[data-theme="blood-and-rust"] {
+  --bg: #0f0806;
+  --panel: #1a0f0b;
+  --panel-2: #22140f;
+  --line: #3b2219;
+  --text: #e6d5c3;
+  --muted: #9e8571;
+  --accent: #8c1a12;
+  --gold: #c23a2b;
+  --ok: #6f8a4b;
+  --partial: #c08a2e;
+  --bad: #c0352a;
+}
+[data-theme="blood-and-rust"] body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #2a120c 0%, transparent 60%) fixed,
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.7) 100%) fixed,
+    #0f0806;
+}
+[data-theme="blood-and-rust"] body::before { content: ""; }
+[data-theme="blood-and-rust"] .topbar { background: rgba(15,8,6, 0.94); }
+[data-theme="blood-and-rust"] .action-bar { background: rgba(15,8,6, 0.96); }
+[data-theme="blood-and-rust"] .brand h1 { text-shadow: 0 0 18px rgba(170,30,20,.35); }
+[data-theme="blood-and-rust"] .progress li.current { background: #e6d5c3; }
+[data-theme="blood-and-rust"] .play-btn { background: radial-gradient(circle at 35% 30%, #4a140e, #140806); border-color: #8c1a12; }
+[data-theme="blood-and-rust"] .play-btn:hover { border-color: #a82218; }
+[data-theme="blood-and-rust"] .mini-play { border-color: #8c1a12; }
+[data-theme="blood-and-rust"] .is-playing { animation-name: pulse-blood-and-rust; }
+@keyframes pulse-blood-and-rust {
+  0% { box-shadow: 0 0 0 0 rgba(160,28,18, 0.65); }
+  100% { box-shadow: 0 0 0 22px rgba(160,28,18, 0); }
+}
+[data-theme="blood-and-rust"] .chip[aria-selected="true"] { color: #f3e6d8; background: #8c1a12; border-color: #8c1a12; }
+[data-theme="blood-and-rust"] .card:hover { border-color: #5e3424; }
+[data-theme="blood-and-rust"] .card[aria-selected="true"] { border-color: #c23a2b; box-shadow: inset 0 0 0 1px #c23a2b; background: #2c1610; }
+[data-theme="blood-and-rust"] .thumb { background: #0a0504; }
+[data-theme="blood-and-rust"] .primary { background: #8c1a12; color: #f3e6d8; }
+[data-theme="blood-and-rust"] .primary:hover:not(:disabled) { background: #a82218; }
+[data-theme="blood-and-rust"] .primary:disabled { background: #2e1a13; color: #7a6150; }
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="blood-and-rust"] .is-playing { box-shadow: 0 0 0 4px rgba(160,28,18, 0.5); }
+}

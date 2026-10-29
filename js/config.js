@@ -36,6 +36,15 @@ window.HUNTLE_CONFIG = {
   // Link included in the share text. Leave empty to use the page's own URL.
   shareUrl: "",
 
+  // Color themes offered in Settings. "default" is the look in styles.css; the
+  // others are defined in css/themes.css. Swatches are [background, accent, title].
+  themes: [
+    { id: "default", name: "Sepia & Gold", swatches: ["#13100e", "#b5352a", "#cfa95e"] },
+    { id: "bone-and-ash", name: "Bone & Ash", swatches: ["#08080a", "#e9e5dc", "#8d8984"] },
+    { id: "bayou-night", name: "Bayou Night", swatches: ["#04060a", "#24466e", "#a9c1dc"] },
+    { id: "blood-and-rust", name: "Blood & Rust", swatches: ["#0f0806", "#8c1a12", "#c23a2b"] },
+  ],
+
   // Filter chips shown above the weapon list: [key, chip label, label on the
   // answer screen]. Keys match "category" in weapons.js.
   categories: [

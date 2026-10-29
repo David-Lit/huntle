@@ -395,6 +395,51 @@
     }
   }
 
+  // ---------- themes ----------
+
+  function currentTheme() {
+    return document.documentElement.dataset.theme || "default";
+  }
+
+  // Match the phone's browser bar to the page background.
+  function syncThemeColor() {
+    const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+    $('meta[name="theme-color"]').setAttribute("content", bg);
+  }
+
+  function applyTheme(id) {
+    if (id === "default") delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = id;
+    // Stored as plain text (not JSON) because the script in <head> reads it.
+    try {
+      localStorage.setItem("huntle:theme", id);
+    } catch (e) {}
+    syncThemeColor();
+    $$(".theme-option").forEach((b) => b.setAttribute("aria-checked", b.dataset.theme === id));
+  }
+
+  function buildThemeList() {
+    // Ignore a saved theme that no longer exists.
+    if (!C.themes.some((t) => t.id === currentTheme())) delete document.documentElement.dataset.theme;
+    syncThemeColor();
+    const list = $("#theme-list");
+    C.themes.forEach((t) => {
+      const b = el("button", "theme-option");
+      b.setAttribute("role", "radio");
+      b.dataset.theme = t.id;
+      b.setAttribute("aria-checked", t.id === currentTheme());
+      const sw = el("span", "swatches");
+      t.swatches.forEach((c) => {
+        const dot = el("span", "swatch");
+        dot.style.background = c;
+        sw.appendChild(dot);
+      });
+      b.append(sw, el("span", "theme-name", t.name));
+      b.addEventListener("click", () => applyTheme(t.id));
+      list.appendChild(b);
+    });
+  }
+
   function openDialog(id) {
     const d = $(id);
     if (id === "#dlg-stats") renderStats();
@@ -416,6 +461,7 @@
     $("#btn-submit").addEventListener("click", submit);
     $("#btn-help").addEventListener("click", () => openDialog("#dlg-help"));
     $("#btn-stats").addEventListener("click", () => openDialog("#dlg-stats"));
+    $("#btn-settings").addEventListener("click", () => openDialog("#dlg-settings"));
     $("#btn-sum-stats").addEventListener("click", () => openDialog("#dlg-stats"));
     $("#btn-share").addEventListener("click", share);
 
@@ -470,6 +516,7 @@
     $$(".rounds-count").forEach((e) => (e.textContent = N));
     $$(".reset-note").forEach((e) => (e.textContent = `A new set of shots every day at ${C.resetHour === 0 ? "midnight" : pad(C.resetHour) + ":00"}, Argentina time.`));
 
+    buildThemeList();
     buildChips();
     buildGrid();
     filterGrid();

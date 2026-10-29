@@ -39,6 +39,16 @@ Note: the daily picks are shuffled from the answer pool, so adding or removing w
 | `shareUrl` | Link used in the "Share result" text |
 | `seedSalt` | Changing it reshuffles all puzzles |
 
+## Color themes
+
+Players pick a theme with the gear button (Settings). The choice is saved on their device.
+
+- **Sepia & Gold** (default) is defined in `css/styles.css`.
+- **Bone & Ash**, **Bayou Night** and **Blood & Rust** live in `css/themes.css`. Each applies when the page has `data-theme="<id>"`, and they all use the same set of rules, so they cover the same parts of the page.
+- The list shown in Settings is `themes` in `js/config.js`. To add a theme, add its rules to `css/themes.css` and an entry there.
+
+All three extra themes together add about 2 KB to the page, and switching is instant.
+
 ## Running it on your computer
 
 Browsers block some features when a page is opened straight from a file, so serve the folder locally:
