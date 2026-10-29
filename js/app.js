@@ -327,6 +327,9 @@
     return {
       played: s.played || 0,
       total: s.total || 0,
+      // Shots that were green or yellow. Stats saved before this was tracked
+      // only know the green ones, so fall back to that.
+      hits: s.hits == null ? s.total || 0 : s.hits,
       streak: s.streak || 0,
       maxStreak: s.maxStreak || 0,
       last: s.last == null ? null : s.last,
@@ -340,6 +343,7 @@
     if (s.last === puzzle.number) return;
     s.played += 1;
     s.total += score();
+    s.hits += state.guesses.filter((g) => g.result !== "wrong").length;
     s.streak = s.last === puzzle.number - 1 ? s.streak + 1 : 1;
     s.maxStreak = Math.max(s.maxStreak, s.streak);
     s.last = puzzle.number;
@@ -352,8 +356,8 @@
     // A streak only counts if the last game played was today's or yesterday's.
     const live = s.last != null && s.last >= D.currentNumber() - 1 ? s.streak : 0;
     $("#st-played").textContent = s.played;
-    // Share of all shots ever played that were named exactly right.
-    $("#st-avg").textContent = (s.played ? Math.round((s.total / (s.played * N)) * 100) : 0) + "%";
+    // Share of all shots ever played that were green or yellow.
+    $("#st-avg").textContent = (s.played ? Math.round((s.hits / (s.played * N)) * 100) : 0) + "%";
     $("#st-streak").textContent = live;
     $("#st-max").textContent = s.maxStreak;
     const max = Math.max(1, ...s.dist);
