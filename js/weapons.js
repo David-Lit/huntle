@@ -78,7 +78,6 @@ window.HUNTLE_WEAPONS = [
   // Special ammo
   { id: "nitro-express", name: "Nitro Express", category: "special" },
   { id: "crossbow", name: "Crossbow", category: "special" },
-  { id: "shredder", name: "Shredder", category: "special", aliases: ["scarce"] },
   { id: "bomb-lance", name: "Bomb Lance", category: "special" },
   { id: "dolch-96", name: "Dolch 96", category: "special", aliases: ["Dolch 96 Precision"] },
   { id: "hunting-bow", name: "Hunting Bow", category: "special", aliases: ["bow"] },
