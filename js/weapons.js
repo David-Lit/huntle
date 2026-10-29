@@ -3,8 +3,8 @@
  * Names follow the Hunt: Showdown 1896 wiki (huntshowdown.wiki.gg/wiki/Weapons),
  * grouped by ammo type like the wiki. Melee weapons are left out, and so are
  * variants (Shorty, Precision, Match...) since they sound like the base weapon,
- * and silencers, which are too hard to tell apart. The Vetterli 71 Cyclone is
- * kept because it sounds different.
+ * and silencers, which are too hard to tell apart. The Vetterli 71 Cyclone and
+ * Mosin-Nagant Avtomat are kept because they sound different.
  *
  * Fields:
  *   id        Unique, lowercase, dashes. Also the default file name:
@@ -59,7 +59,8 @@ window.HUNTLE_WEAPONS = [
   // Special long ammo
   { id: "krag", name: "Krag", category: "special-long", aliases: ["springfield m1892"] },
   { id: "lebel-1886", name: "Lebel 1886", category: "special-long" },
-  { id: "mosin-nagant", name: "Mosin-Nagant", category: "special-long", aliases: ["m1891"] },
+  { id: "mosin-nagant", name: "Mosin-Nagant", category: "special-long", family: "mosin-nagant", aliases: ["m1891"] },
+  { id: "mosin-nagant-avtomat", name: "Mosin-Nagant Avtomat", category: "special-long", family: "mosin-nagant", aliases: ["avtomat"] },
   { id: "berthier-1892", name: "Berthier 1892", category: "special-long", aliases: ["mle"] },
   { id: "mosin-obrez", name: "Mosin Obrez", category: "special-long", aliases: ["Mosin Obrez Match"] },
 
