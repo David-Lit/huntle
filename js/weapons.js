@@ -3,8 +3,8 @@
  * Names follow the Hunt: Showdown 1896 wiki (huntshowdown.wiki.gg/wiki/Weapons),
  * grouped by ammo type like the wiki. Melee weapons are left out, and so are
  * variants (Shorty, Precision, Match...) since they sound like the base weapon,
- * and silencers, which are too hard to tell apart. The Vetterli 71 Cyclone and
- * Mosin-Nagant Avtomat are kept because they sound different.
+ * and silencers, which are too hard to tell apart. The Vetterli 71 Cyclone,
+ * Mosin-Nagant Avtomat and Sparks Pistol are kept because they sound different.
  *
  * Fields:
  *   id        Unique, lowercase, dashes. Also the default file name:
@@ -38,7 +38,7 @@ window.HUNTLE_WEAPONS = [
 
   // Medium ammo
   { id: "centennial", name: "Centennial", category: "medium", aliases: ["Centennial Shorty", "winfield 1876"] },
-  { id: "drilling", name: "Drilling", category: "medium", aliases: ["Drilling Shorty"] },
+  { id: "drilling", name: "Drilling", category: "medium", aliases: ["Drilling Shorty", "Drilling Hatchet"] },
   { id: "maynard-sniper", name: "Maynard Sniper", category: "medium" },
   { id: "springfield-1866", name: "Springfield 1866", category: "medium", aliases: ["Springfield 1866 Shorty"] },
   { id: "vetterli-71", name: "Vetterli 71", category: "medium", family: "vetterli-71", aliases: ["karabiner"] },
@@ -51,7 +51,8 @@ window.HUNTLE_WEAPONS = [
   // Long ammo
   { id: "mako-1895", name: "Mako 1895", category: "long" },
   { id: "martini-henry", name: "Martini-Henry", category: "long", aliases: ["ic1"] },
-  { id: "sparks", name: "Sparks", category: "long", aliases: ["Sparks Pistol", "sparks lrr"] },
+  { id: "sparks", name: "Sparks", category: "long", family: "sparks", aliases: ["sparks lrr"] },
+  { id: "sparks-pistol", name: "Sparks Pistol", category: "long", family: "sparks" },
   { id: "1890-cavalry", name: "1890 Cavalry", category: "long" },
   { id: "uppercut", name: "Uppercut", category: "long", aliases: ["Uppercut Precision", "caldwell"] },
   { id: "haymaker", name: "Haymaker", category: "long" },
