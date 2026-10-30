@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#13100e">
+  <meta name="robots" content="noindex">
+  <title>Page not found · Huntle</title>
+  <!-- Root-relative paths: this page can be served at any missing address, however deep. -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/themes.css">
+  <script>
+    // Same as index.html: use the player's saved color theme.
+    try {
+      var t = localStorage.getItem("huntle:theme");
+      if (t && /^[a-z-]+$/.test(t) && t !== "default") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <style>
+    .not-found { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .not-found .big-score { font-size: 4.5rem; }
+    .not-found p { margin: 8px 0; }
+    .not-found .primary { display: inline-block; margin-top: 20px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-side"></div>
+    <div class="brand"><h1>HUNTLE</h1></div>
+    <div class="topbar-side end"></div>
+  </header>
+  <main class="not-found">
+    <p class="eyebrow">Error 404</p>
+    <p class="big-score">Missed.</p>
+    <p class="muted">Nothing out here but swamp. This page doesn't exist.</p>
+    <a class="primary" href="/">Back to today's Huntle</a>
+  </main>
+</body>
+</html>
