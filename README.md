@@ -24,9 +24,18 @@ That's it. Nothing else needs to change.
 
 `js/weapons.js` follows the 1896 names on the [Hunt: Showdown wiki](https://huntshowdown.wiki.gg/wiki/Weapons), grouped by ammo type. Melee weapons are left out, and so are variants (Shorty, Precision, Match and so on) because they sound the same as their base weapon (the Vetterli 71 Cyclone, Mosin-Nagant Avtomat and Sparks Pistol are exceptions, as they sound different). Variant names are search words on the base weapon, so searching "Romero 77 Shorty" finds the Romero 77. Silencers are left out too, as they are too hard to tell apart. Add, rename or remove entries freely. Weapons that share a `family` (for example the Vandal 73C and the Ranger 73) are related guns: mixing them up scores yellow instead of red. `aliases` adds extra search words.
 
-Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess, they only ever count as one answer, and only the first one listed in `weapons.js` needs a sound file.
+Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess. Only one of them is ever an answer and needs a sound file; the others are marked `inPool: false`.
 
-Note: the daily picks are shuffled from the answer pool, so adding or removing weapons changes upcoming puzzles. That's fine before launch. After launch, prefer adding weapons in batches.
+## Changing weapons after launch
+
+Every player gets the same five shots each day because the puzzles are dealt in a fixed order from shuffled "decks" of weapons. Each day only depends on the days before it, so you can change the weapon list without changing a puzzle people already played, as long as you date the change for **tomorrow or later** (Argentina time):
+
+- **Add a weapon:** add its entry, sound and image, with `since: "YYYY-MM-DD"`. It joins the next deck shuffled from that date.
+- **Retire a weapon:** add `until: "YYYY-MM-DD"` (its last possible day). Later days skip it.
+- **Turn on a held-back weapon** (one with `inPool: false`, like the Homestead 78): replace `inPool: false` with `since: "YYYY-MM-DD"`.
+- **Group two weapons that sound the same:** give both the same `soundGroup`, and put `until: "YYYY-MM-DD"` (today's date) on the one that should stop being an answer. Guessing it still counts as correct from then on.
+
+Renaming a weapon, fixing a search word, swapping an image or re-cutting a sound never affects the puzzle order. Changing `seedSalt`, `launchDate` or `roundsPerDay` reshuffles everything, so leave them alone after launch.
 
 ## Settings (`js/config.js`)
 
@@ -70,6 +79,12 @@ Any static host works. Two easy options:
 
 - **Netlify Drop:** go to https://app.netlify.com/drop and drag the `huntle` folder onto the page.
 - **GitHub Pages:** push this folder to a GitHub repository, then in the repo go to Settings → Pages and set the source to the main branch.
+
+## Link previews and app icon
+
+- `assets/og-image.png` (1200×630) is the picture shown when the game's link is posted on Discord, Reddit, iMessage, WhatsApp or X. The tags that point to it are at the top of `index.html`.
+- Those tags need full web addresses, currently `https://huntle.pages.dev/`. **If the game moves to its own domain, update the four `huntle.pages.dev` addresses in `index.html`** (and `shareUrl` in `js/config.js`).
+- `assets/apple-touch-icon.png`, `assets/icon-192.png`, `assets/icon-512.png` and `manifest.webmanifest` give the game a proper icon when saved to a phone's home screen. Opened from there, it runs full screen like an app.
 
 ## How it works
 

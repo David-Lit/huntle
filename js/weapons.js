@@ -14,19 +14,28 @@
  *   family    Optional. Weapons with the same family are variants of one gun.
  *             Guessing the right family but wrong variant scores a yellow (partial).
  *   soundGroup Optional. Weapons with the same soundGroup sound identical, so
- *             guessing any of them counts as correct. They are treated as one
- *             answer, and the first one listed here supplies the sound file.
+ *             guessing any of them counts as correct. Only one of them should be an
+ *             answer (and needs a sound file); give the others inPool: false.
  *   aliases   Optional. Extra search terms (old pre-1896 names go here).
  *   audio     Optional. Custom audio file name (e.g. "winfield.ogg").
  *   image     Optional. Custom image file name (e.g. "winfield.jpg").
  *   inPool    Optional. Set to false to keep the weapon as a guess option but
  *             never use it as an answer (e.g. you have no sound for it yet).
+ *   since     Optional. Argentina date ("YYYY-MM-DD") from which the weapon can be
+ *             an answer. Use this for anything added after launch.
+ *   until     Optional. Last Argentina date on which the weapon can be an answer.
+ *             Use this to retire a weapon, or to fold it into a soundGroup.
+ *
+ * After launch, never add, remove or regroup answer weapons directly: that would
+ * reshuffle puzzles people already played. Instead, date the change with
+ * "since"/"until" set to tomorrow or later (see README, "Changing weapons after
+ * launch"). Weapons only used as guesses (inPool: false) can change freely.
  */
 window.HUNTLE_WEAPONS = [
   // Compact ammo
   { id: "ranger-73", name: "Ranger 73", category: "compact", family: "73", soundGroup: "73", aliases: ["winfield"] },
-  { id: "frontier-73c", name: "Frontier 73C", category: "compact", family: "73", soundGroup: "73", aliases: ["winfield"] },
-  { id: "infantry-73l", name: "Infantry 73L", category: "compact", family: "73", soundGroup: "73", aliases: ["winfield"] },
+  { id: "frontier-73c", name: "Frontier 73C", category: "compact", family: "73", soundGroup: "73", aliases: ["winfield"], inPool: false },
+  { id: "infantry-73l", name: "Infantry 73L", category: "compact", family: "73", soundGroup: "73", aliases: ["winfield"], inPool: false },
   { id: "vandal-73c", name: "Vandal 73C", category: "compact", family: "73", aliases: ["winfield"] },
   { id: "marathon", name: "Marathon", category: "compact" },
   { id: "lemat", name: "LeMat", category: "compact", aliases: ["LeMat Carbine", "lemat mark ii"] },
@@ -67,7 +76,7 @@ window.HUNTLE_WEAPONS = [
 
   // Shotgun shells
   { id: "auto-5", name: "Auto-5", category: "shells", soundGroup: "auto", aliases: ["crown king"] },
-  { id: "auto-4-shorty", name: "Auto-4 Shorty", category: "shells", soundGroup: "auto" },
+  { id: "auto-4-shorty", name: "Auto-4 Shorty", category: "shells", soundGroup: "auto", inPool: false },
   { id: "homestead-78", name: "Homestead 78", category: "shells", aliases: ["scarce"], inPool: false },
   { id: "rival-78", name: "Rival 78", category: "shells", aliases: ["Rival 78 Shorty", "caldwell rival"] },
   { id: "romero-77", name: "Romero 77", category: "shells", aliases: ["Romero 77 Shorty"] },
@@ -82,7 +91,7 @@ window.HUNTLE_WEAPONS = [
   { id: "bomb-lance", name: "Bomb Lance", category: "special", soundGroup: "bomb" },
   { id: "dolch-96", name: "Dolch 96", category: "special", aliases: ["Dolch 96 Precision"] },
   { id: "hunting-bow", name: "Hunting Bow", category: "special", aliases: ["bow"] },
-  { id: "bomb-launcher", name: "Bomb Launcher", category: "special", soundGroup: "bomb" },
+  { id: "bomb-launcher", name: "Bomb Launcher", category: "special", soundGroup: "bomb", inPool: false },
   { id: "chu-ko-nu", name: "Chu Ko Nu", category: "special" },
   { id: "flame-rifle", name: "Flame Rifle", category: "special", aliases: ["scarce"], inPool: false },
   { id: "hand-crossbow", name: "Hand Crossbow", category: "special" },

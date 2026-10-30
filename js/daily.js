@@ -55,38 +55,79 @@
     return a;
   }
 
-  // One entry per distinct sound. Weapons sharing a soundGroup count once, and
-  // the first weapon listed in that group (in weapons.js) supplies the sound.
-  function answerPool() {
-    const seen = new Set();
-    const ids = [];
-    WEAPONS.forEach((w) => {
-      if (w.inPool === false) return;
-      const key = w.soundGroup || w.id;
-      if (seen.has(key)) return;
-      seen.add(key);
-      ids.push(w.id);
-    });
-    return ids.sort();
+  // Puzzle number of an Argentina calendar date ("YYYY-MM-DD").
+  function numberOfDate(s) {
+    const [y, m, d] = s.split("-").map(Number);
+    return Date.UTC(y, m - 1, d) / DAY - launchIndex() + 1;
   }
 
-  // Weapons are dealt from a shuffled deck, five per day, so no weapon repeats
-  // until the whole pool has been used. Then a new deck is shuffled.
+  // "since" / "until" in weapons.js, as puzzle numbers.
+  const range = new Map(
+    WEAPONS.map((w) => [
+      w.id,
+      { from: w.since ? numberOfDate(w.since) : -Infinity, to: w.until ? numberOfDate(w.until) : Infinity },
+    ])
+  );
+
+  function eligible(id, n) {
+    const r = range.get(id);
+    return r.from <= n && n <= r.to;
+  }
+
+  // Possible answers on puzzle n. Only one weapon per soundGroup should be an
+  // answer (the others have inPool: false or an "until" date); this is spelled out
+  // in weapons.js rather than worked out here, so regrouping never rewrites history.
+  function poolOn(n) {
+    return WEAPONS.filter((w) => w.inPool !== false && eligible(w.id, n))
+      .map((w) => w.id)
+      .sort();
+  }
+
+  // Weapons are dealt day by day from a shuffled deck, so no weapon repeats until
+  // the deck runs out; then a new deck is shuffled from the pool on that day.
+  // Each day only depends on the days before it, so a weapon added with a future
+  // "since" date (or retired with "until") never changes a puzzle already played.
+  const dealt = [];
+  let deck = [];
+  let deckNo = -1;
+  let cursor = 0;
+
+  function take(n) {
+    const picks = [];
+    let i = cursor;
+    while (picks.length < C.roundsPerDay && i < deck.length) {
+      if (eligible(deck[i], n)) picks.push(deck[i]);
+      i++;
+    }
+    if (picks.length < C.roundsPerDay) return null;
+    cursor = i;
+    return picks;
+  }
+
+  function dealThrough(n) {
+    for (let day = dealt.length || 1; day <= n; day++) {
+      let picks = take(day);
+      if (!picks) {
+        deckNo++;
+        deck = shuffled(poolOn(day), C.seedSalt + ":" + deckNo);
+        cursor = 0;
+        picks = take(day);
+      }
+      if (!picks) {
+        throw new Error(`Huntle needs at least ${C.roundsPerDay} weapons in the answer pool on puzzle ${day}.`);
+      }
+      dealt[day] = picks;
+    }
+  }
+
   function puzzleForNumber(n) {
     const k = C.roundsPerDay;
     const fixed = C.schedule && C.schedule[n];
     if (fixed) return { number: n, answers: fixed.slice(0, k) };
-
-    const pool = answerPool();
-    if (pool.length < k) {
-      throw new Error(`Huntle needs at least ${k} weapons in the answer pool, found ${pool.length}.`);
-    }
-    const perDeck = Math.floor(pool.length / k);
-    const idx = n - 1;
-    const deck = Math.floor(idx / perDeck);
-    const slot = idx - deck * perDeck;
-    const order = shuffled(pool, C.seedSalt + ":" + deck);
-    return { number: n, answers: order.slice(slot * k, slot * k + k) };
+    // Days before launch (puzzle 0 and below) get a one-off shuffle.
+    if (n < 1) return { number: n, answers: shuffled(poolOn(n), C.seedSalt + ":pre" + n).slice(0, k) };
+    dealThrough(n);
+    return { number: n, answers: dealt[n].slice() };
   }
 
   window.HuntleDaily = {
