@@ -66,8 +66,8 @@ window.HUNTLE_WEAPONS = [
   { id: "mosin-obrez", name: "Mosin Obrez", category: "special-long", aliases: ["Mosin Obrez Match"] },
 
   // Shotgun shells
-  { id: "auto-5", name: "Auto-5", category: "shells", aliases: ["crown king"] },
-  { id: "auto-4-shorty", name: "Auto-4 Shorty", category: "shells" },
+  { id: "auto-5", name: "Auto-5", category: "shells", soundGroup: "auto", aliases: ["crown king"] },
+  { id: "auto-4-shorty", name: "Auto-4 Shorty", category: "shells", soundGroup: "auto" },
   { id: "homestead-78", name: "Homestead 78", category: "shells", aliases: ["scarce"], inPool: false },
   { id: "rival-78", name: "Rival 78", category: "shells", aliases: ["Rival 78 Shorty", "caldwell rival"] },
   { id: "romero-77", name: "Romero 77", category: "shells", aliases: ["Romero 77 Shorty"] },

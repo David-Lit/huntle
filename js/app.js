@@ -376,7 +376,8 @@
 
   async function share() {
     const url = C.shareUrl || location.origin + location.pathname;
-    const text = `Huntle #${puzzle.number} ${score()}/${N}\n${state.guesses.map((g) => SQUARES[g.result]).join("")}\n${url}`;
+    // Lines are separated by an empty line.
+    const text = [`Huntle #${puzzle.number} ${score()}/${N}`, state.guesses.map((g) => SQUARES[g.result]).join(""), url].join("\n\n");
     const touch = window.matchMedia("(pointer: coarse)").matches;
     if (touch && navigator.share) {
       try {
