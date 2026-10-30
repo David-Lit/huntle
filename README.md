@@ -1,5 +1,7 @@
 # Huntle
 
+**Play at [huntle.pages.dev](https://huntle.pages.dev).**
+
 A daily Hunt: Showdown sound quiz. Each day players hear five gunshots and name the weapon behind each one. A new set goes live every day at midnight Argentina time, and every player gets the same five shots.
 
 It is a plain static website (HTML, CSS and JavaScript) with no build step and no server code.
@@ -25,6 +27,16 @@ That's it. Nothing else needs to change.
 `js/weapons.js` follows the 1896 names on the [Hunt: Showdown wiki](https://huntshowdown.wiki.gg/wiki/Weapons), grouped by ammo type. Melee weapons are left out, and so are variants (Shorty, Precision, Match and so on) because they sound the same as their base weapon (the Vetterli 71 Cyclone, Mosin-Nagant Avtomat and Sparks Pistol are exceptions, as they sound different). Variant names are search words on the base weapon, so searching "Romero 77 Shorty" finds the Romero 77. Silencers are left out too, as they are too hard to tell apart. Add, rename or remove entries freely. Weapons that share a `family` (for example the Vandal 73C and the Ranger 73) are related guns: mixing them up scores yellow instead of red. `aliases` adds extra search words.
 
 Weapons that sound identical (for example the Ranger, Frontier and Infantry) share a `soundGroup`. Any of them counts as a correct guess. Only one of them is ever an answer and needs a sound file; the others are marked `inPool: false`.
+
+## Making changes safely
+
+Every push to `main` goes live for players within a minute. Make changes on the `test` branch instead:
+
+1. Commit to `test` and push it. Cloudflare Pages builds a preview of that branch at **https://test.huntle.pages.dev** (the live game is untouched).
+2. Check the preview. It has its own saved data, so testing there doesn't touch your real stats.
+3. When it looks right, merge `test` into `main` (on GitHub: open a pull request from `test` to `main` and merge it). That deploys it to the live game.
+
+Push weapon-list changes just after midnight Argentina time, and date them with `since`/`until` (see below).
 
 ## Changing weapons after launch
 
