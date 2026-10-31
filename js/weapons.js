@@ -39,9 +39,10 @@ window.HUNTLE_WEAPONS = [
   { id: "vandal-73c", name: "Vandal 73C", category: "compact", family: "73", aliases: ["winfield"] },
   { id: "marathon", name: "Marathon", category: "compact" },
   { id: "lemat", name: "LeMat", category: "compact", aliases: ["LeMat Carbine", "lemat mark ii"] },
-  { id: "officer", name: "Officer", category: "compact", aliases: ["Officer Carbine", "nagant officer"] },
+  // Sounds the same as the Nagant M1895: grouped on 2026-10-31, answer until then.
+  { id: "officer", name: "Officer", category: "compact", soundGroup: "nagant", until: "2026-10-31", aliases: ["Officer Carbine", "nagant officer"] },
   { id: "bornheim-no-3", name: "Bornheim No. 3", category: "compact", aliases: ["Bornheim No. 3 Match"] },
-  { id: "nagant-m1895", name: "Nagant M1895", category: "compact", aliases: ["Nagant M1895 Precision"] },
+  { id: "nagant-m1895", name: "Nagant M1895", category: "compact", soundGroup: "nagant", aliases: ["Nagant M1895 Precision"] },
   { id: "conversion", name: "Conversion", category: "compact", aliases: ["caldwell conversion"] },
   { id: "new-army", name: "New Army", category: "compact", aliases: ["caldwell 92"] },
 
