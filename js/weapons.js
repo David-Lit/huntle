@@ -71,10 +71,11 @@ window.HUNTLE_WEAPONS = [
   // Special long ammo
   { id: "krag", name: "Krag", category: "special-long", aliases: ["springfield m1892"] },
   { id: "lebel-1886", name: "Lebel 1886", category: "special-long" },
-  { id: "mosin-nagant", name: "Mosin-Nagant", category: "special-long", family: "mosin-nagant", aliases: ["m1891"] },
+  { id: "mosin-nagant", name: "Mosin-Nagant", category: "special-long", family: "mosin-nagant", soundGroup: "mosin", aliases: ["m1891"] },
   { id: "mosin-nagant-avtomat", name: "Mosin-Nagant Avtomat", category: "special-long", family: "mosin-nagant", aliases: ["avtomat"] },
   { id: "berthier-1892", name: "Berthier 1892", category: "special-long", aliases: ["mle"] },
-  { id: "mosin-obrez", name: "Mosin Obrez", category: "special-long", aliases: ["Mosin Obrez Match"] },
+  // Sounds the same as the Mosin-Nagant: grouped on 2026-11-06, answer until then.
+  { id: "mosin-obrez", name: "Mosin Obrez", category: "special-long", family: "mosin-nagant", soundGroup: "mosin", until: "2026-11-06", aliases: ["Mosin Obrez Match"] },
 
   // Shotgun shells
   { id: "auto-5", name: "Auto-5", category: "shells", soundGroup: "auto", aliases: ["crown king"] },
