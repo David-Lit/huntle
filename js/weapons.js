@@ -47,14 +47,15 @@ window.HUNTLE_WEAPONS = [
   { id: "new-army", name: "New Army", category: "compact", aliases: ["caldwell 92"] },
 
   // Medium ammo
-  { id: "centennial", name: "Centennial", category: "medium", aliases: ["Centennial Shorty", "winfield 1876"] },
+  { id: "centennial", name: "Centennial", category: "medium", soundGroup: "centennial", aliases: ["Centennial Shorty", "winfield 1876"] },
   { id: "drilling", name: "Drilling", category: "medium", aliases: ["Drilling Shorty", "Drilling Hatchet"] },
   { id: "maynard-sniper", name: "Maynard Sniper", category: "medium" },
   { id: "springfield-1866", name: "Springfield 1866", category: "medium", aliases: ["Springfield 1866 Shorty"] },
   { id: "vetterli-71", name: "Vetterli 71", category: "medium", family: "vetterli-71", aliases: ["karabiner"] },
   { id: "vetterli-71-cyclone", name: "Vetterli 71 Cyclone", category: "medium", family: "vetterli-71", aliases: ["cyclone"] },
   { id: "scottfield", name: "Scottfield", category: "medium", aliases: ["Scottfield Precision", "model 3"] },
-  { id: "wildland", name: "Wildland", category: "medium", aliases: ["scarce"] },
+  // Sounds near identical to the Centennial: grouped on 2026-11-06, answer until then.
+  { id: "wildland", name: "Wildland", category: "medium", soundGroup: "centennial", until: "2026-11-06", aliases: ["scarce"] },
   { id: "1865-carbine", name: "1865 Carbine", category: "medium" },
   { id: "pax", name: "Pax", category: "medium", aliases: ["caldwell pax"] },
 
